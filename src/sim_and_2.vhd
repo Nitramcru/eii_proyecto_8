@@ -1,9 +1,9 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
 use std.env.finish;
 
 entity sim_and_2 is
-  -- vacío
 end sim_and_2;
 
 architecture sim of sim_and_2 is
@@ -22,14 +22,10 @@ begin
 
   excitaciones: process
   begin
-    AB <= "00";
-    wait for 1 ns;
-    AB <= "01";
-    wait for 1 ns;
-    AB <= "10";
-    wait for 1 ns;
-    AB <= "11";
-    wait for 1 ns;
+    for i in 0 to 3 loop
+      AB <= std_logic_vector(to_unsigned(i,2));
+      wait for 1 ns;
+    end loop;
     wait for 1 ns; -- Espera extra antes de salir
     finish;
   end process; -- excitaciones
