@@ -15,8 +15,11 @@ Electrónica II para Ing. Electrónica. 2024
   - Sumador completo
   - Comparador de 4 bit binario natural
   - Comparador de 4 bit complemento a dos
+
 - Diseña, describe a nivel transferencia de registros, evalúa mediante simulación los siguientes componentes:
+
   - Función *cero* de 32 bit. La entrada es una señal de 32 bit y la salida una señal de un bit, que vale $1$ cuando la señal de entrada vale cero.
+  
   - Función *AND* de dos entradas de 32 bit. Las entradas y la salida son señales de 32 bit. Cada bit de la salida es el producto lógico de los bits correspondientes de las entradas.
   - Función *OR* de dos entradas de 32 bit. Las entradas y la salida son señales de 32 bit. Cada bit de la salida es la suma lógica de los bits correspondientes de las entradas.
   - Función *XOR* de dos entradas de 32 bit. Las entradas y la salida son señales de 32 bit. Cada bit de la salida es el o exclusivo de los bits correspondientes de las entradas.
@@ -24,6 +27,8 @@ Electrónica II para Ing. Electrónica. 2024
   - Función *MENOR QUE* de 32 bit para valores en binario natural y con signo complemento a dos. Incluye una entrada de selección, $0$ con signo y $1$ sin signo, dos entradas, $A$ y $B$, de 32 bit y una salida de un bit. La salida es $1$ si la entrada $A$ es menor que la entrada $B$ y $0$ caso contrario. La comparación se realiza considerando valores en binario natural o en complemento a dos según indique la entrada de selección.
   - Función *desplazamiento a la izquierda* de un valor de 32 bit por la cantidad de bits indicada por un valor de 5 bit. Ingresa ceros por la derecha.
   - Función *desplazamiento a la derecha* de un valor de 32 bit por la cantidad de bits indicada por un valor de 5 bit. Cuenta con un selector de modo *con signo*. En modo sin signo ingresa ceros por la izquierda, en modo con signo copia el bit de signo (extensión de signo).
+
+
 - A partir de los componentes desarrollados en el punto anterior, diseña, describe a nivel estructural y evalúa mediante simulación una unidad aritmética-lógica de 32 bit con dos entradas de operando, una entrada de selección, una salida de resultado y una salida de cero, con las funciones dadas por la Tabla 1.
 - Diseña, describe a nivel comportamental y evalúa mediante simulación un registro de 32 bit con habilitación de escritura.
 
@@ -43,6 +48,7 @@ Tabla 1: Funciones de la ALU.
 |`111-` | $A \wedge B$ | $Y=0$ |
 
 *Notas*:  *Sel* es la entrada de selección, de 4 bit. *A* y *B* son los operandos, de 32 bit. *Y* es el resultado, de 32 bit y *Z* es la salida de cero, de un bit. Los operadores '$<<$' y '$>>$' denotan desplazamiento a la izquierda y desplazamiento a la derecha respectivamente. Los operadores '$=$' y '$<$' denotan las operaciones relacionales *igual a* y *menor que*, que evalúan a $1$ si se cumple la condición y $0$ en caso contrario.
+
 
 ## Entregables
 
