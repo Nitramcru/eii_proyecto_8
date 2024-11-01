@@ -27,8 +27,8 @@ begin
   variable aleatorio : aletorio_t;
   begin
     for i in 0 to 99 loop
-      entradaA <= aleatorio.genera_vector(8);
-      entradaB <= aleatorio.genera_vector(3);
+      entradaA <= aleatorio.genera_vector(32);
+      entradaB <= aleatorio.genera_vector(5);
       con_signo <= aleatorio.genera_bit;
       wait for 1 ns;
     end loop;

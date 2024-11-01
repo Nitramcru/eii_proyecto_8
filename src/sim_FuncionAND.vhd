@@ -9,21 +9,28 @@ end sim_FuncionAND;
 architecture sim of sim_FuncionAND is
   component FuncionAND is
     port (
-      A : in  std_logic;
-      B : in  std_logic;
-      Y : out std_logic
+      entrada1 : in  std_logic_vector (31 downto 0);
+      entrada2 : in  std_logic_vector (31 downto 0);
+      salida : out std_logic
     );
   end component; -- FuncionAND
-  signal entradas : std_logic_vector (1 downto 0);
+  signal entrada1 : std_logic_vector (31 downto 0);
+  signal entrada2 : std_logic_vector (31 downto 0);
   signal salida : std_logic;
 begin
   -- Dispositivo bajo prueba
-  dut : FuncionAND port map (A=>entradas(1),B=>entradas(0),Y=>salida);
+  dut : FuncionAND port map (entrada1=>entrada1, entrada2=>entrada2, salida=>salida);
 
-  excitaciones: process
+  estimulo: process
+    variable aleatoria: aleatoria_t;
   begin
-    for i in 0 to (2**entradas'length)-1 loop
-      entradas <= std_logic_vector(to_unsigned(i,entradas'length));
+    entrada1 <= (others =>'0')
+    entrada2 <= (others =>'0')
+    
+    wait for 1ns;
+
+    for i in 0 tto 99 loop
+      entrada1 <= aleatoria.genera_vector(32);
       wait for 1 ns;
     end loop;
     wait for 1 ns; -- Espera extra antes de salir

@@ -9,21 +9,21 @@ end sim_FuncionXOR;
 architecture sim of sim_FuncionXOR is
   component FuncionXOR is
     port (
-      A : in  std_logic;
-      B : in  std_logic;
-      Y : out std_logic
+      A : in  std_logic_vector (31 downto 0);
+      Z : out std_logic
     );
   end component; -- FuncionXOR
-  signal entradas : std_logic_vector (1 downto 0);
-  signal salida : std_logic;
+  signal A : std_logic_vector (31 downto 0);
+  signal Z : std_logic;
 begin
   -- Dispositivo bajo prueba
   dut : FuncionXOR port map (A=>entradas(1),B=>entradas(0),Y=>salida);
 
-  excitaciones: process
+  estimulo: process
+  variable aleatoria: aleatoria_t;
   begin
-    for i in 0 to (2**entradas'length)-1 loop
-      entradas <= std_logic_vector(to_unsigned(i,entradas'length));
+    for i in 0 to 99 loop
+      A <= aleatoria.genera_vector(32);
       wait for 1 ns;
     end loop;
     wait for 1 ns; -- Espera extra antes de salir
