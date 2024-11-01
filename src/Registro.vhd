@@ -6,7 +6,7 @@ entity Registro is
     clk : in  std_logic;
     D :   in  std_logic_vector (31 downto 0);
     hab:  in  std_logic;
-    Q :   out std_logic_vector (31 downto 0);
+    Q :   out std_logic_vector (31 downto 0)
   );
 end Registro;
 

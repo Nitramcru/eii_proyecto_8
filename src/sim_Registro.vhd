@@ -2,6 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 use std.env.finish;
+use work.util_sim.all;
 
 entity sim_Registro is
 end sim_Registro;
@@ -12,7 +13,7 @@ architecture sim of sim_Registro is
       clk : in  std_logic;
       D : in  std_logic_vector (31 downto 0);
       had : in std_logic;
-      Q= out std_logic_vector (31 downto 0)
+      Q : out std_logic_vector (31 downto 0)
     );
   end component; -- Registro
 
@@ -24,17 +25,19 @@ begin
   dut : Registro port map (clk=>clk,D=>D,hab=>hab,Q=>Q);
 
   reloj: process
+  begin
     clk<= '0';
     wait for 1 ns;
     clk <= '1';
     wait for 1 ns;
-    end process;
+  end process;
 
   estimulo: process
-  variable aleatorio:aleatorio_t;
-  procedure sig_ciclo is
-    wait uatil rising_edge (clk);
-    wait for 0.5 ns;
+    variable aleatorio:aleatorio_t;
+    procedure sig_ciclo is
+    begin
+      wait until rising_edge (clk);
+      wait for 0.5 ns;
     end procedure;
 
 

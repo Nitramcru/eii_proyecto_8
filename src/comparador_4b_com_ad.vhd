@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity comparador_4b_binnat is
+entity comparador_4b_com_Ad is
   port (
     A : in  std_logic_vector (3 downto 0);
     B : in  std_logic_vector (3 downto 0);
@@ -9,10 +9,10 @@ entity comparador_4b_binnat is
     menor : out std_logic;
     igual : out std_logic
   );
-end comparador_4b_binnat;
+end comparador_4b_com_Ad;
 
 
-architecture arch of comparador_4b_binnat is
+architecture arch of comparador_4b_com_Ad is
 signal u,v,w :std_logic;
   begin
   mayor <= u;

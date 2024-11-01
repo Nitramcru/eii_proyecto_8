@@ -2,6 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 use std.env.finish;
+use work.util_sim.all;
 
 entity sim_FuncionCero is
 end sim_FuncionCero;
@@ -20,10 +21,10 @@ begin
   dut : FuncionCero port map ( entrada=> entrada ,salida =>salida );
 
   estimulo: process
-    variable aleatoria: aleatoria_t;
+    variable aleatoria: aleatorio_t ;
   begin
-    entrada<= (others =>'0')
-    wait for 1ns;
+    entrada<= (others =>'0');
+    wait for 1 ns;
 
     for i in 0 to 99 loop
       entrada <= aleatoria.genera_vector(32);

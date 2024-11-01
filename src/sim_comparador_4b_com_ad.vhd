@@ -3,11 +3,11 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 use std.env.finish;
 
-entity sim_comparador_4b_binnat is
-end sim_comparador_4b_binnat;
+entity sim_comparador_4b_com_ad is
+end sim_comparador_4b_com_ad;
 
-architecture sim of sim_comparador_4b_binnat is
-  component comparador_4b_binnat is
+architecture sim of sim_comparador_4b_com_ad is
+  component comparador_4b_com_ad is
     port (
       A : in  std_logic_vector (3 downto 0);
       B : in  std_logic_vector (3 downto 0);
@@ -20,7 +20,7 @@ architecture sim of sim_comparador_4b_binnat is
   signal mayor, menor, igual: std_logic;
 begin
   -- Dispositivo bajo prueba
-  dut : comparador_4b_binnat port map (A=>entradas(7 downto 4),B=>entradas(3 downto 0),
+  dut : comparador_4b_com_ad port map (A=>entradas(7 downto 4),B=>entradas(3 downto 0),
   mayor=>mayor,menor=>menor,igual=>igual);
 
   excitaciones: process

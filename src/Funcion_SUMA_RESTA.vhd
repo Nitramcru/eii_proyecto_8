@@ -15,13 +15,13 @@ entity Funcion_SUMA_RESTA is
 end Funcion_SUMA_RESTA;
 
 architecture arch of Funcion_SUMA_RESTA is
-  signal  Suma   <= std_logic_vector
-  signal  Resta  <= std_logic_vector
+  signal  Suma : std_logic_vector;
+  signal  Resta : std_logic_vector;
 begin
 
-  Suma  <= std_logic_vector(unsigned(entrada1) + unsigned(entrada2))
+  Suma  <= std_logic_vector(unsigned(entrada1) + unsigned(entrada2));
 
-  Resta <= std_logic_vector(unsigned(entrada1) - unsigned(entrada2))
+  Resta <= std_logic_vector(unsigned(entrada1) - unsigned(entrada2));
 
   salida <= Suma when Seleccion = '0' else Resta;
 

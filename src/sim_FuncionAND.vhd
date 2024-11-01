@@ -24,12 +24,12 @@ begin
   estimulo: process
     variable aleatoria: aleatoria_t;
   begin
-    entrada1 <= (others =>'0')
-    entrada2 <= (others =>'0')
+    entrada1 <= (others =>'0');
+    entrada2 <= (others =>'0');
     
-    wait for 1ns;
+    wait for 1 ns;
 
-    for i in 0 tto 99 loop
+    for i in 0 to 99 loop
       entrada1 <= aleatoria.genera_vector(32);
       wait for 1 ns;
     end loop;
