@@ -10,14 +10,14 @@ end sim_Funcion_desplaza_der;
 architecture sim of sim_Funcion_desplaza_der is
   component Funcion_desplaza_der is
     port (
-      A         : in  std_logic_vector (7 downto 0);
-      B         : in  std_logic_vector (2 downto 0);
+      A         : in  std_logic_vector (31 downto 0);
+      B         : in  std_logic_vector (4 downto 0);
       con_signo : in std_logic;
-      Y         : out std_logic_vector (7 downto 0)
+      Y         : out std_logic_vector (31 downto 0)
     );
   end component; -- Funcion_desplaza_der
-  signal entradaA, salida : std_logic_vector (7 downto 0);
-  signal entradaB : std_logic_vector (2 DOWNTO 0);
+  signal entradaA, salida : std_logic_vector (31 downto 0);
+  signal entradaB : std_logic_vector (2 downto 0);
   signal con_signo : std_logic;
 begin
   -- Dispositivo bajo prueba

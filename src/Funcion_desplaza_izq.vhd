@@ -6,6 +6,7 @@ entity Funcion_desplaza_izq is
     A         : in  std_logic_vector (31 downto 0);
     B         : in  std_logic_vector (4 downto 0);
     Y         : out std_logic_vector (31 downto 0)
+  
   );
 end Funcion_desplaza_izq;
 

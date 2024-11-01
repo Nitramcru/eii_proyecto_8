@@ -9,24 +9,42 @@ end sim_Registro;
 architecture sim of sim_Registro is
   component Registro is
     port (
-      A : in  std_logic;
-      B : in  std_logic;
-      Y : out std_logic
+      clk : in  std_logic;
+      D : in  std_logic_vector (31 downto 0);
+      had : in std_logic;
+      Q= out std_logic_vector (31 downto 0)
     );
   end component; -- Registro
-  signal entradas : std_logic_vector (1 downto 0);
-  signal salida : std_logic;
-begin
-  -- Dispositivo bajo prueba
-  dut : Registro port map (A=>entradas(1),B=>entradas(0),Y=>salida);
 
-  excitaciones: process
+  signal clk,hab : std_logic;
+  signal D,Q : std_logic_vector (31 downto 0);
+begin
+
+  -- Dispositivo bajo prueba
+  dut : Registro port map (clk=>clk,D=>D,hab=>hab,Q=>Q);
+
+  reloj: process
+    clk<= '0';
+    wait for 1 ns;
+    clk <= '1';
+    wait for 1 ns;
+    end process;
+
+  estimulo: process
+  variable aleatorio:aleatorio_t;
+  procedure sig_ciclo is
+    wait uatil rising_edge (clk);
+    wait for 0.5 ns;
+    end procedure;
+
+
   begin
-    for i in 0 to (2**entradas'length)-1 loop
-      entradas <= std_logic_vector(to_unsigned(i,entradas'length));
-      wait for 1 ns;
+    for i in 0 to 99 loop
+      D <= aleatorio.genera_vector(32);
+      hab<= aleatorio.genera_bit;
+      sig_ciclo;
     end loop;
-    wait for 1 ns; -- Espera extra antes de salir
+    wait for 1 ns; 
     finish;
-  end process; -- excitaciones
+  end process; 
 end sim;

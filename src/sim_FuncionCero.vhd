@@ -9,26 +9,27 @@ end sim_FuncionCero;
 architecture sim of sim_FuncionCero is
   component FuncionCero is
     port (
-      entrada : in  std_logic_vector (31 downto 0);
-      cero : out std_logic
+      A : in  std_logic_vector (31 downto 0);
+      Z : out std_logic
     );
   end component; -- FuncionCero
-  signal entradas : std_logic_vector (1 downto 0);
-  signal salida : std_logic;
+  signal A : std_logic_vector (31 downto 0);
+  signal Z : std_logic;
 begin
   -- Dispositivo bajo prueba
-  dut : FuncionCero port map (A=>entradas(1),B=>entradas(0),Y=>salida);
+  dut : FuncionCero port map (A=>A,Z=>Z);
 
-  excitaciones: process
+  estimulo: process
+    variable aleatoria: aleatoria_t;
   begin
-    for i in 0 to (2**entradas'length)-1 loop
-      if (entrada = X"00000000" ) then
-        cero <= '1';
-      else
-      cero <= '0';
-      end if;
-      wait for 1 ns;
+    A<= (others =>'0')
+    wait for 1ns;
+
+    for i in 0 to 99 loop
+      A <= aleatoria.genera_vector(32);
+      wait for 1ns;
     end loop;
+    
     wait for 1 ns; -- Espera extra antes de salir
     finish;
   end process; -- excitaciones
