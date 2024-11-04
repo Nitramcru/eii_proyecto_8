@@ -2,6 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 use std.env.finish;
+use work.util_sim.all;
 
 entity sim_Funcion_SUMA_RESTA is
 end sim_Funcion_SUMA_RESTA;
@@ -9,29 +10,28 @@ end sim_Funcion_SUMA_RESTA;
 architecture sim of sim_Funcion_SUMA_RESTA is
   component Funcion_SUMA_RESTA is
     port (
-      A : in  std_logic_vector (31 downto 0);
-      B : in  std_logic_vector (31 downto 0);
-      resta: in std_logic;
-
-      Y : out std_logic_vector (31 downto 0)
+      entrada1 : in  std_logic_vector (31 downto 0);
+      entrada2 : in  std_logic_vector (31 downto 0);
+      Seleccion: in std_logic;
+      salida : out std_logic_vector (31 downto 0)
     );
   end component; -- Funcion_SUMA_RESTA
 
-  signal A, B, Y : std_logic_vector (31 downto 0);
-  signal resta : std_logic;
+  signal entrada1, entrada2, salida : std_logic_vector (31 downto 0);
+  signal Seleccion : std_logic;
 begin
   -- Dispositivo bajo prueba
-  dut : Funcion_SUMA_RESTA port map (A=>A, B=>B, resta=>resta, Y=>Y);
+  dut : Funcion_SUMA_RESTA port map (entrada1=>entrada1, entrada2=> entrada2, Seleccion=>Seleccion, salida=>salida);
 
   estimulo: process
-    variable aleatoria: aleatoria_t;
+    variable aleatoria: aleatorio_t;
   begin
     
     for i in 0 to 99 loop
-      A <= aleatorio.genera_vector (32);
-      B <= aleatorio.genera_vector (32);
+      entrada1 <= aleatoria.genera_vector (32);
+      entrada2 <= aleatoria.genera_vector (32);
       
-      resta <= aleatoria.genera_bit;
+      Seleccion <= aleatoria.genera_bit;
 
       wait for 1 ns;
     

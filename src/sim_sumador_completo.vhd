@@ -31,7 +31,7 @@ begin
   excitaciones: process
   begin
     for i in 0 to 7 loop
-      AB <= std_logic_vector(to_unsigned(i,3));
+      entradas <= std_logic_vector(to_unsigned(i,3));
       wait for 1 ns;
     end loop;
     wait for 1 ns; -- Espera extra antes de salir

@@ -7,16 +7,14 @@ entity Funcion_SUMA_RESTA is
     entrada1 : in  std_logic_vector (31 downto 0);
     entrada2 : in  std_logic_vector (31 downto 0);
     Seleccion  : in  std_logic;
-    
     salida  : out  std_logic_vector (31 downto 0)
-
   );
 
 end Funcion_SUMA_RESTA;
 
 architecture arch of Funcion_SUMA_RESTA is
-  signal  Suma : std_logic_vector;
-  signal  Resta : std_logic_vector;
+  signal  Suma : std_logic_vector(31 downto 0);
+  signal  Resta : std_logic_vector(31 downto 0);
 begin
 
   Suma  <= std_logic_vector(unsigned(entrada1) + unsigned(entrada2));
