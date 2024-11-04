@@ -31,5 +31,4 @@ signal u,v,w :std_logic;
 
   w <= (A(3) xnor B(3)) and (A(2) xnor B(2)) and (A(1) xnor B(1)) and (A(0) xnor B(0));
 
-  
 end arch;
